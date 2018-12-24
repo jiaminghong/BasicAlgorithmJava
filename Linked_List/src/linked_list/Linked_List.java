@@ -41,11 +41,11 @@ public class Linked_List {
     public void insertAtSelected(int input, Node given) {
         Node currentNode = head;
         while(currentNode != given) {
-            currentNode = currentNode.next;
-        }
-        if(currentNode == null) {
-            System.out.print("Your given node is not inside this Linked List.");
-            return;
+            if(currentNode.next != null)    currentNode = currentNode.next;
+            else {
+                System.out.println("Your given node is not inside this Linked List.");
+                return;
+            }
         }
         Node inputNode = new Node(input);
         inputNode.next = currentNode.next;
@@ -74,11 +74,13 @@ public class Linked_List {
         Node second = new Node(1);
         Node third = new Node(3);
         Node fourth = new Node(4);
+        Node Ming = new Node(22);
         ll.head.next = second;
         second.next = third;
         third.next = fourth;
         ll.printList();
         ll.insertAtFront(-1);
+        ll.insertAtSelected(2, Ming);
         ll.insertAtSelected(2, second);
         ll.insertAtTail(5);
     }
